@@ -1,0 +1,41 @@
+Problem Statement –
+
+Joseph is learning digital logic subject which will be for his next semester. He usually tries to solve unit assignment problems before the lecture. 
+Today he got one tricky question. The problem statement is “A positive integer has been given as an input. Convert decimal value to binary representation. 
+Toggle all bits of it after the most significant bit including the most significant bit. Print the positive integer value after toggling all bits”.
+
+Constrains-
+
+1<=N<=100
+
+Example 1:
+
+Input :
+
+10  -> Integer
+
+Output :5    -> result- Integer
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+      StringBuilder s=new StringBuilder();
+      Scanner sc=new Scanner(System.in);
+      int n=sc.nextInt();
+      while(n>0){
+          int rem=n%2;
+          s.append(rem);
+          n=n/2;
+      }
+//this loop used to print the string from toggling the bits 
+      for(int i=0;i<s.length();i++){
+          System.out.print(s.charAt(i));
+      }
+      System.out.println();
+//this loop will print the string in the reverse order of the bits
+      for(int i=s.length()-1;i>=0;i--){
+          System.out.print(s.charAt(i));
+      }
+     
+    
+}
+}
