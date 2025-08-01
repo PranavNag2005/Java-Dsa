@@ -82,38 +82,118 @@ public class Addll {
             temp=temp.next;
         }System.out.println();
     }
+    Node[] Alternativesplit(Node head){
+        if(head==null){
+            return null;
+        }
+        Node temp=head;
+        Node dummy=new Node(-1);
+        Node tail=dummy;
+        Node dummy2=new Node(-1);
+        Node tail2=dummy2;
+        int count=0;
+        while(temp!=null){
+            if(count%2==0){
+                Node newnode=new Node(temp.data);
+                tail.next=newnode;
+                tail=newnode;
+            }else{
+                Node newnodes=new Node(temp.data);
+                tail2.next=newnodes;
+                tail2=newnodes;
+            }
+            count+=1;
+            temp=temp.next;
+        }
+        Node arr[]=new Node[2];
+        arr[0]=dummy.next;
+        arr[1]=dummy2.next;
+        return arr;
+    }
+    int sumoflastnnodes(Node head,int val){
+        Node temp=head;
+        int count=0;
+        int ans=0;
+        while(temp!=null){
+            count+=1;
+            temp=temp.next;
+        }
+        temp=head;
+        if(val==2 && count==2){
+           while(temp!=null){
+            ans+=temp.data;
+            temp=temp.next;
+           }
+        }
+        int last=count-val;
+        temp=head;
+        int counter=0;
+        while(temp!=null){
+            if(counter>=last){
+                ans+=temp.data;
+            }
+            temp=temp.next;
+            counter+=1;
+        }
+        return ans;
+    }
+ Node insertAtEnd(Node head, int x) {
+        // code here
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        Node newnode=new Node(x);
+        temp.next=newnode;
+        temp=newnode;
+        return head;
+    }
     public static void main(String[] args) {
-        Addll a=new Addll();
-        a.insertatfirst(3);
-        a.insertatfirst(2);
-        a.insertatfirst(1);
-        Addll b=new Addll();
-        b.insertatfirst(4);
-        b.insertatfirst(6);
-        b.insertatfirst(5);
-        a.display();
-        b.display();
-        Node answer=a.add(b.head);
-        a.display(answer);
+        // Addll a=new Addll();
+        // a.insertatfirst(3);
+        // a.insertatfirst(2);
+        // a.insertatfirst(1);
+        // Addll b=new Addll();
+        // b.insertatfirst(4);
+        // b.insertatfirst(6);
+        // b.insertatfirst(5);
+        // a.display();
+        // b.display();
+        // Node answer=a.add(b.head);
+        // a.display(answer);
 
-        Addll remove=new Addll();
+        // Addll remove=new Addll();
         
-        remove.insertatfirst(1);
-         remove.insertatfirst(2);
-          remove.insertatfirst(3);
-          remove.insertatfirst(3);
+        // remove.insertatfirst(1);
+        //  remove.insertatfirst(2);
+        //   remove.insertatfirst(3);
+        //   remove.insertatfirst(3);
 
-          remove.insertatfirst(5);
+        //   remove.insertatfirst(5);
 
-          remove.insertatfirst(6);
+        //   remove.insertatfirst(6);
 
-        remove.display();
-        Node removelementanswer=remove.removeelement(remove.head, 2);
-        remove.display(removelementanswer);
-        int val=3;
-        Node inplace=remove.removeelementinplace(remove.head,val);
-        remove.display(inplace);
+        // remove.display();
+        // Node removelementanswer=remove.removeelement(remove.head, 2);
+        // remove.display(removelementanswer);
+        // int val=3;
+        // Node inplace=remove.removeelementinplace(remove.head,val);
+        // remove.display(inplace);
+Addll a=new Addll();
+a.insertatfirst(5);
+a.insertatfirst(9);
+a.insertatfirst(6);
+a.insertatfirst(3);
+a.insertatfirst(4);
+a.insertatfirst(10);
+a.display();
+// Node arr[]=a.Alternativesplit(a.head);
+// a.display(arr[0]);
+// a.display(arr[1]);
+System.out.println(a.sumoflastnnodes(a.head, 3));
 
+a.insertAtEnd(a.head, 50);
+a.display();
 
     }
 }
